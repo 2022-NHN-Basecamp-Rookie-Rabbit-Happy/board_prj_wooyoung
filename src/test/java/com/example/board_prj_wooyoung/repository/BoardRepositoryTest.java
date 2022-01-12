@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.board_prj_wooyoung.entity.Board;
 import com.example.board_prj_wooyoung.entity.Member;
+import java.util.Optional;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,17 @@ public class BoardRepositoryTest {
             boardRepository.save(board);
 
         });
+    }
+
+    @Test
+    public void testRead1() {
+
+        Optional<Board> result = boardRepository.findById(100L);
+
+        Board board = result.get();
+
+        System.out.println(board);
+        System.out.println(board.getWriter());
+
     }
 }
