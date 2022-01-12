@@ -1,6 +1,7 @@
 package com.example.board_prj_wooyoung.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class Board {
 
     private String content;
 
-    @ManyToOne /* Board : Member = N : 1 */
+    @ManyToOne(fetch = FetchType.LAZY) /* 명시적으로 지연 로딩 지정 */
     private Member writer;
 
 }
