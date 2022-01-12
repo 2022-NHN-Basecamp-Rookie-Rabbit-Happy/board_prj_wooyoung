@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,5 +26,8 @@ public class Board {
     private String title;
 
     private String content;
+
+    @ManyToOne /* Board : Member = N : 1 */
+    private Member member;
 
 }
