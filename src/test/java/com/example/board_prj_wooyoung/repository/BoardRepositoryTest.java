@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.board_prj_wooyoung.entity.Board;
 import com.example.board_prj_wooyoung.entity.Member;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.IntStream;
 import javax.transaction.Transactional;
@@ -47,6 +49,18 @@ public class BoardRepositoryTest {
 
         System.out.println(board);
         System.out.println(board.getWriter());
+
+    }
+
+    @Test
+    public void testReadWithWriter() {
+
+        Object result = boardRepository.getBoardWithWriter(100L);
+
+        Object[] arr = (Object[]) result;
+
+        System.out.println("-------------------------");
+        System.out.println(Arrays.toString(arr));
 
     }
 }
