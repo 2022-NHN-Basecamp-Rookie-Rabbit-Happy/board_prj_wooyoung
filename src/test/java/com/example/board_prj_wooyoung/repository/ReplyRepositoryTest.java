@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.board_prj_wooyoung.entity.Board;
 import com.example.board_prj_wooyoung.entity.Reply;
+import java.util.Optional;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,17 @@ public class ReplyRepositoryTest {
 
             replyRepository.save(reply);
         });
+    }
+
+    @Test
+    public void readReply1() {
+
+        Optional<Reply> result = replyRepository.findById(1L);
+
+        Reply reply = result.get();
+
+        System.out.println(reply);
+        System.out.println(reply.getBoard());
+
     }
 }
