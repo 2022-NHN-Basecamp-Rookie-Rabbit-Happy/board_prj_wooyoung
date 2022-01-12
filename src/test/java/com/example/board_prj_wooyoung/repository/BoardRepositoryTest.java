@@ -6,6 +6,7 @@ import com.example.board_prj_wooyoung.entity.Board;
 import com.example.board_prj_wooyoung.entity.Member;
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 import javax.transaction.Transactional;
@@ -62,5 +63,15 @@ public class BoardRepositoryTest {
         System.out.println("-------------------------");
         System.out.println(Arrays.toString(arr));
 
+    }
+
+    @Test
+    public void testGetBoardWithReply() {
+
+        List<Object[]> result = boardRepository.getBoardWithReply(100L);
+
+        for (Object[] arr : result) {
+            System.out.println(Arrays.toString(arr));
+        }
     }
 }
