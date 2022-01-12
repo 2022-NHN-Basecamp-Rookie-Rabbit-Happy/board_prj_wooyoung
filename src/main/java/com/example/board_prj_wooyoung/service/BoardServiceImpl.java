@@ -7,6 +7,7 @@ import com.example.board_prj_wooyoung.entity.Board;
 import com.example.board_prj_wooyoung.entity.Member;
 import com.example.board_prj_wooyoung.repository.BoardRepository;
 import com.example.board_prj_wooyoung.repository.ReplyRepository;
+import java.util.Optional;
 import java.util.function.Function;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -67,5 +68,18 @@ public class BoardServiceImpl implements BoardService {
 
         boardRepository.deleteById(bno);
 
+    }
+
+    @Override
+    @Transactional
+    public void modify(BoardDTO boardDTO) {
+        /*Optional<Board> result = boardRepository.findById(boardDTO.getBno());
+
+        Board board = result.get();*/
+        Board board = boardRepository.getOne(boardDTO.getBno());
+        board.setTitle(boardDTO.getTitle());
+        board.setContent(boardDTO.getContent());
+
+        boardRepository.save(board);
     }
 }
