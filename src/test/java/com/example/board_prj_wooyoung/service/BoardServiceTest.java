@@ -50,4 +50,13 @@ public class BoardServiceTest {
         System.out.println(boardDTO);
 
     }
+
+    @Test
+    public void testRemove() {
+
+        Long bno = 1L;
+
+        boardService.removeWithReplies(bno);
+
+    }
 }
