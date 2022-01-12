@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @ToString
@@ -24,8 +25,8 @@ public class BoardDTO {
 
     private String writerName;
 
-    private LocalDateTime regDate;
-    private LocalDateTime modDate;
+    @DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
+    private LocalDateTime regDate, modDate;
 
     private int replyCount;
 }
