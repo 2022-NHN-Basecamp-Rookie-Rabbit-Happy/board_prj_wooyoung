@@ -3,6 +3,8 @@ package com.example.board_prj_wooyoung.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.board_prj_wooyoung.dto.BoardDTO;
+import com.example.board_prj_wooyoung.dto.PageRequestDTO;
+import com.example.board_prj_wooyoung.dto.PageResultDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,5 +25,18 @@ public class BoardServiceTest {
             .build();
 
         Long bno = boardService.register(dto);
+    }
+
+    @Test
+    public void testList() {
+
+        PageRequestDTO pageRequestDTO = new PageRequestDTO();
+
+        PageResultDTO<BoardDTO, Object[]> result = boardService.getList(pageRequestDTO);
+
+        for (BoardDTO boardDTO : result.getDtoList()) {
+            System.out.println(boardDTO);
+        }
+
     }
 }

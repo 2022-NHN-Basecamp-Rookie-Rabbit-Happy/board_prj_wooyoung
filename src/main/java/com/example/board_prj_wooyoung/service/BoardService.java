@@ -2,12 +2,16 @@ package com.example.board_prj_wooyoung.service;
 
 
 import com.example.board_prj_wooyoung.dto.BoardDTO;
+import com.example.board_prj_wooyoung.dto.PageRequestDTO;
+import com.example.board_prj_wooyoung.dto.PageResultDTO;
 import com.example.board_prj_wooyoung.entity.Board;
 import com.example.board_prj_wooyoung.entity.Member;
 
 public interface BoardService {
 
     Long register(BoardDTO dto);
+
+    PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO pageRequestDTO);
 
     default Board dtoToEntity(BoardDTO dto) {
 
@@ -23,5 +27,21 @@ public interface BoardService {
             .build();
 
         return board;
+    }
+
+    default BoardDTO entityToDTO(Board board, Member member, Long replyCount) {
+
+        BoardDTO boardDTO = BoardDTO.builder()
+            .bno(board.getBno())
+            .title(board.getTitle())
+            .content(board.getContent())
+            .regDate(board.getRegDate())
+            .modDate(board.getModDate())
+            .writerEmail(member.getEmail())
+            .writerName(member.getName())
+            .replyCount(replyCount.intValue())
+            .build();
+
+        return boardDTO;
     }
 }
