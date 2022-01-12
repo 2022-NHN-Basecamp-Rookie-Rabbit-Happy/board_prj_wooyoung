@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.board_prj_wooyoung.entity.Board;
 import com.example.board_prj_wooyoung.entity.Member;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +12,10 @@ import javax.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 @SpringBootTest
 public class BoardRepositoryTest {
@@ -73,5 +76,20 @@ public class BoardRepositoryTest {
         for (Object[] arr : result) {
             System.out.println(Arrays.toString(arr));
         }
+    }
+
+    @Test
+    public void testWithReplyCount() {
+
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("bno").descending());
+
+        Page<Object[]> result = boardRepository.getBoardWithReplyCount(pageable);
+
+        result.get().forEach(row -> {
+
+            Object[] arr = (Object[]) row;
+
+            System.out.println(Arrays.toString(arr));
+        });
     }
 }
