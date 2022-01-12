@@ -38,7 +38,7 @@ public class BoardRepositoryTest {
                 .writer(member)
                 .build();
 
-            boardRepository.save(board);
+//            boardRepository.save(board);
 
         });
     }

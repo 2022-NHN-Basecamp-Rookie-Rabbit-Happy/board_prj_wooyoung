@@ -24,7 +24,7 @@ public class MemberRepositoryTest {
                 .name("USER" + i)
                 .build();
 
-            memberRepository.save(member);
+//            memberRepository.save(member);
         });
     }
 }

@@ -32,7 +32,7 @@ public class ReplyRepositoryTest {
                 .replyer("guest")
                 .build();
 
-            replyRepository.save(reply);
+//            replyRepository.save(reply);
         });
     }
 
