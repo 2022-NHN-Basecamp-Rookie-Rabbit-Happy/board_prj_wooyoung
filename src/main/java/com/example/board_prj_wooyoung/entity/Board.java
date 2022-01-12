@@ -28,6 +28,6 @@ public class Board {
     private String content;
 
     @ManyToOne /* Board : Member = N : 1 */
-    private Member member;
+    private Member writer;
 
 }
