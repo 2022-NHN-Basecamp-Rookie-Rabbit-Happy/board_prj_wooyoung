@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.board_prj_wooyoung.entity.Board;
 import com.example.board_prj_wooyoung.entity.Reply;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
@@ -46,5 +47,14 @@ public class ReplyRepositoryTest {
         System.out.println(reply);
         System.out.println(reply.getBoard());
 
+    }
+
+    @Test
+    public void testListByBoard() {
+        List<Reply> replyList = replyRepository.getRepliesByBoardOrderByRno(
+            Board.builder().bno(100L).build()
+        );
+
+        replyList.forEach(reply -> System.out.println(reply));
     }
 }
