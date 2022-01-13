@@ -52,6 +52,31 @@
       </button>
     </a>
 
+    <div>
+      <div class="mt-4">
+        <h5>
+          <span class="badge badge-secondary replyCount">
+            Reply Count [[${dto.replyCount}]]
+          </span>
+        </h5>
+      </div>
+    </div>
+
+    <script th:inline="javascript">
+      console.log("test")
+      $(document).ready(() => {
+        const bno = [[${dto.bno}]];
+
+        const listGroup = $(".replyList");
+
+        $(".replyCount").click(() => {
+          $.getJSON('/replies/board/' + bno, arr => {
+            console.log(arr);
+          })
+        })
+      })
+    </script>
+
   </th:block>
 </th:block>
 </html>

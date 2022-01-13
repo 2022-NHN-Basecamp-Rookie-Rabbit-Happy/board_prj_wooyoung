@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ReplyServiceImpl implements ReplyService {
 
-    private ReplyRepository replyRepository;
+    private final ReplyRepository replyRepository;
 
     @Override
     public Long register(ReplyDTO replyDTO) {
